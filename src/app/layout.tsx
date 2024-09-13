@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Jost } from "next/font/google";
 import "./globals.css";
+import Header from "./components/layouts/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
+const jost = Jost({
+  weight: ["500"], 
+  subsets: ["latin"],
+  variable: "--font-jost",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ja">
+      <body className={`${inter.className} ${jost.variable}`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
