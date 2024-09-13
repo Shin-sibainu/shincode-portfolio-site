@@ -1,25 +1,15 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { pageLinks } from './headerNav';
+import Link from 'next/link';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
-  }
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'visible'
-    }
-
-    return () => {
-      document.body.style.overflow = 'visible'
-    }
-  }, [isOpen])
+  };
 
   return (
     <div>
@@ -33,18 +23,26 @@ const HamburgerMenu = () => {
       </button>
       {isOpen && (
         <>
-        <div className="fixed inset-0 bg-opacity-100 z-40" onClick={() => setIsOpen(false)}></div>
+        <div className="fixed inset-0 bg-opacity-100 z-40 top-[77px]" onClick={() => setIsOpen(false)}></div>
         <div className="top-[77px] fixed inset-x-0 px-6 bg-secondary-100 z-50" onClick={() => setIsOpen(false)}>
-          <div className="bg-white flex flex-col gap-1 py-5 px-4 z-60">
-            <a href="#" className="font-jost text-primary-950 py-[5px] text-sm font-medium leading-none tracking-wid text-left duration-300 ease-out hover:opacity-60">ABOUT</a>
-            <a href="#" className="font-jost text-primary-950 py-[5px] text-sm font-medium leading-none tracking-wid text-left duration-300 ease-out hover:opacity-60">SERVICES</a>
-            <a href="#" className="font-jost text-primary-950 py-[5px] text-sm font-medium leading-none tracking-wid text-left duration-300 ease-out hover:opacity-60">CONTACT</a>
-          </div>
+          <nav>
+            <ul className="bg-white flex flex-col gap-1 py-5 px-4 z-60">
+              {pageLinks.map((pageLink) => (
+                  <Link
+                    key={pageLink.title}
+                    href={pageLink.href}
+                    className="font-jost text-primary-950 py-[5px] text-sm font-medium leading-none tracking-wid text-left duration-300 ease-out hover:opacity-60"
+                  >
+                    <li>{pageLink.title}</li>
+                  </Link>
+              ))}
+            </ul>
+          </nav>
         </div>
         </>
       )}
     </div>
   )
-}
+};
 
 export default HamburgerMenu;
