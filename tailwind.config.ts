@@ -16,9 +16,18 @@ const config: Config = {
       colors: {
         "secondary-100": "#EFEEEA",
         "primary-950": "#1C273E",
+        "primary-900": "#304A78",
+        "primary-100": "#E1EDF8",
       },
       fontFamily: {
         jost: "var(--font-jost)",
+        notoSansJP: "var(--font-notoSansJP)",
+      },
+      padding: {
+        "6.67": "6.67%",
+      },
+      boxShadow: {
+        "custom": "8px 8px 32px 0px rgba(0, 0, 0, 0.1)",
       },
     },
   },
