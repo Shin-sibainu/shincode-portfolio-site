@@ -6,7 +6,7 @@ import { pageLinks, snsLinks } from './headerNav';
 
 const Header = () => {
   return (
-    <header className="bg-secondary-100 w-full h-[80px] flex items-center px-0 md:px-24 fixed z-50">
+    <header className="bg-secondary-100 w-full h-[80px] flex items-center px-0 md:px-6.67 fixed z-50">
       <div className="px-6 w-full h-full text-primary-950">
         <div className="border-b-2 border-solid border-white font-jost flex justify-between items-center h-full">
           <div className="font-medium leading-6 text-left">
