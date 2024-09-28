@@ -38,5 +38,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-//layout.tsxのchildrenをmainタグでくくってヘッダーとの位置調整を行いました
