@@ -29,14 +29,14 @@ export const socialLinks: SocialLinkType[] = [
     name: "@programming_tutorial_youtube",
     description: "Udemyのような中身の濃いプログラミング動画を定期的に配信しています。",
     href: "https://www.youtube.com/@programming_tutorial_youtube",
-    iconSize: { width: 40, height: 40 },
+    iconSize: { width: 40, height: 30 },
   },
   {
     icon: "/footer/github-icon.svg",
     name: "@Shin-sibainu",
     description: "動画で解説したソースコードはGitHubで公開しています。",
     href: "https://github.com/Shin-sibainu",
-    iconSize: { width: 36, height: 35 },
+    iconSize: { width: 36, height: 36 },
   }
 ];
 

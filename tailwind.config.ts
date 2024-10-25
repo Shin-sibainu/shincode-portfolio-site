@@ -29,7 +29,8 @@ const config: Config = {
         "6.67": "6.67%",
       },
       boxShadow: {
-        "custom": "8px 8px 32px 0px rgba(0, 0, 0, 0.1)",
+        "contact": "8px 8px 32px 0px rgba(0, 0, 0, 0.1)",
+        "social-link": "8px 8px 32px 0px rgba(41,37,33,0.1)",
       },
     },
   },

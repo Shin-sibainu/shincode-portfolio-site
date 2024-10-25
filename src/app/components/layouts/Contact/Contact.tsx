@@ -11,7 +11,7 @@ const Contact = () => {
             <p>お仕事、サービスに関するお問い合わせなど</p>
             <p>お気軽にご連絡ください</p>
           </div>  
-          <Link href="/#" className="flex items-center gap-5 bg-white py-3 w-[252px] h-12 rounded-sm border border-white transition duration-300 ease-out hover:bg-primary-100 shadow-custom">
+          <Link href="/#" className="flex items-center gap-5 bg-white py-3 w-[252px] h-12 rounded-sm border border-white transition duration-300 ease-out hover:bg-primary-100 hover:shadow-contact">
             <p className="text-base font-medium leading-6 text-left pl-10 text-primary-950">お問い合わせはこちら</p>
             <Image
               src="/button-arrow.svg"
