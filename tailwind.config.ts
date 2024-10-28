@@ -15,6 +15,8 @@ const config: Config = {
       },
       colors: {
         "secondary-100": "#EFEEEA",
+        "secondary-300": "#C2BDAF",
+        "secondary-700": "#73675B",
         "primary-950": "#1C273E",
         "primary-900": "#304A78",
         "primary-100": "#E1EDF8",
@@ -27,7 +29,8 @@ const config: Config = {
         "6.67": "6.67%",
       },
       boxShadow: {
-        "custom": "8px 8px 32px 0px rgba(0, 0, 0, 0.1)",
+        "contact": "8px 8px 32px 0px rgba(0, 0, 0, 0.1)",
+        "social-link": "8px 8px 32px 0px rgba(41,37,33,0.1)",
       },
     },
   },

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import { pageLinks } from './headerNav';
+import { pageLinks } from './headerLinks';
 import Link from 'next/link';
 
 const HamburgerMenu = () => {

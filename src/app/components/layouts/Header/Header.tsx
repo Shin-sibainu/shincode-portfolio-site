@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import HamburgerMenu from './HamburgerMenu';
-import { pageLinks, snsLinks } from './headerNav';
+import { pageLinks, snsLinks } from './headerLinks';
 
 const Header = () => {
   return (
@@ -31,7 +31,7 @@ const Header = () => {
               <ul className="flex gap-0 md:gap-2.5">
                 {snsLinks.map((snsLink) => (
                   <li key={snsLink.title} className="w-9 h-9 p-2 flex items-center justify-center hover:opacity-60">
-                    <Link href={snsLink.href}>
+                    <Link href={snsLink.href} target="_blank" rel="noopener noreferrer">
                       <Image
                         src={snsLink.icon!}
                         width={20}

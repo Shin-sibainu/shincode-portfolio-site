@@ -2,20 +2,17 @@ import type { Metadata } from "next";
 import { Inter, Jost, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Header from "./components/layouts/Header/Header";
+import Footer from "./components/layouts/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const jost = Jost({
-  weight: ["500"], 
   subsets: ["latin"],
   variable: "--font-jost",
-  display: "swap",
 });
 const notoSansJP = Noto_Sans_JP({
-  weight: ["500", "700"],
   subsets: ["latin"],
   variable: "--font-notoSansJP",
-  display: "swap",
-})
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -34,6 +31,7 @@ export default function RootLayout({
         <main className="pt-[80px]">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
