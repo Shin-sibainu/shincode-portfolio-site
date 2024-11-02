@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Jost, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-import Header from "./components/layouts/Header/Header";
-import Footer from "./components/layouts/Footer/Footer";
+import Header from "@/components/layouts/Header/Header";
+import Footer from "@/components/layouts/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const jost = Jost({
