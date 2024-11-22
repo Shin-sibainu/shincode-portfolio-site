@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`${inter.className} ${jost.variable} ${notoSansJP.variable}`}>
         <Header />
-        <main className="pt-[80px]">
+        <main className="pt-[80px] bg-secondary-100">
           {children}
         </main>
         <Footer />
