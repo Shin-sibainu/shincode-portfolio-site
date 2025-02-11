@@ -18,9 +18,10 @@ const config: Config = {
   			'secondary-300': '#C2BDAF',
   			'secondary-700': '#73675B',
 				'secondary-950': '#292521',
+				'primary-100': '#E1EDF8',
+				'primary-500': '#5B96D6',
+				'primary-900': '#304A78',
   			'primary-950': '#1C273E',
-  			'primary-900': '#304A78',
-  			'primary-100': '#E1EDF8',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
