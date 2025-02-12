@@ -27,6 +27,6 @@ const MessageSection = () => {
       </div>
     </section>
   )
-}
+};
 
 export default MessageSection;
