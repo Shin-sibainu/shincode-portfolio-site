@@ -18,10 +18,12 @@ const config: Config = {
   			'secondary-300': '#C2BDAF',
   			'secondary-700': '#73675B',
 				'secondary-950': '#292521',
-				'primary-100': '#E1EDF8',
+  			'primary-100': '#E1EDF8',
+				'primary-300': '#A5CDEB',
 				'primary-500': '#5B96D6',
-				'primary-900': '#304A78',
+				'primary-700': '#3D69B8',
   			'primary-950': '#1C273E',
+  			'primary-900': '#304A78',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -72,7 +74,8 @@ const config: Config = {
   		},
   		boxShadow: {
   			'contact': '8px 8px 32px 0px rgba(0, 0, 0, 0.1)',
-  			'social-link': '8px 8px 32px 0px rgba(41,37,33,0.1)'
+  			'social-link': '8px 8px 32px 0px rgba(41,37,33,0.1)',
+				'hero-message': '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
