@@ -3,10 +3,10 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <main className="flex flex-col justify-center items-center py-16 w-full md:px-6.67">
+    <main className="flex flex-col justify-center items-center py-10 md:py-16 w-full md:px-6.67">
       <div className="flex flex-col items-start px-6 max-w-[1248px] w-full">
-        <div className="flex flex-row items-start content-start gap-20 w-full">
-          <div className="flex flex-col justify-center items-start gap-6  w-[520px]">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-20 w-full">
+          <div className="flex flex-col justify-center items-start gap-6 w-full max-w-[520px]">
             <div className="flex flex-col items-start">
               <span className="font-jost font-medium text-lg leading-[27px] flex items-center tracking-wider text-primary-500">
                 Contact
@@ -27,7 +27,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-start bg-white w-[600px]">
+          <div className="flex flex-col items-start bg-white w-full max-w-[600px]">
             <ContactForm />
           </div>
         </div>
