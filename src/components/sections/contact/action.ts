@@ -25,6 +25,8 @@ export async function sendContactForm(_prevState: FormState | undefined, formDat
     return submission.reply();
   }
 
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
   try {
     const validatedData = submission.value;
     

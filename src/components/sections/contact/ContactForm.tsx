@@ -8,6 +8,7 @@ import { contactSchema } from './contact-schema';
 import { sendContactForm } from './action';
 import { useRouter } from 'next/navigation';
 import PrivacyPolicyModal from './PrivacyPolicyModal';
+import ContactSubmitButton from './ContactSubmitButton';
 
 const ContactForm = () => {
   const router = useRouter();
@@ -188,10 +189,7 @@ const ContactForm = () => {
       </div>
 
       <div className="w-full">
-        <button
-          type="submit">
-          送信する
-        </button>
+        <ContactSubmitButton />
         {form.errors && (
         <div>
           <h2>Error:</h2>
