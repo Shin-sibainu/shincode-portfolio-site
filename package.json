@@ -11,7 +11,7 @@
   "dependencies": {
     "@conform-to/react": "^1.2.2",
     "@conform-to/zod": "^1.2.2",
-    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dialog": "^1.1.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.454.0",

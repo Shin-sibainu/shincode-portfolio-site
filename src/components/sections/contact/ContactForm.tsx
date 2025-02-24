@@ -7,6 +7,7 @@ import { parseWithZod } from '@conform-to/zod';
 import { contactSchema } from './contact-schema';
 import { sendContactForm } from './action';
 import { useRouter } from 'next/navigation';
+import PrivacyPolicyModal from './PrivacyPolicyModal';
 
 const ContactForm = () => {
   const router = useRouter();
@@ -174,8 +175,9 @@ const ContactForm = () => {
               value="true"
             />
 
-            <label  className="font-notoSansJP font-medium text-sm leading-[21px] flex items-center tracking-wider text-primary-950">
-              プライバシーポリシーに同意する
+            <label className="font-notoSansJP font-medium text-sm leading-[21px] flex items-center tracking-wider text-primary-950">
+              <PrivacyPolicyModal />
+              に同意する
             </label>
 
           </div>
