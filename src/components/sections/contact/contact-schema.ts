@@ -14,9 +14,8 @@ export const contactSchema = z.object({
   message: z.string({
     required_error: "必須項目です。"
   }).min(1, "必須項目です。"),
-  privacyPolicy: z.literal(true, {
-    required_error: "プライバシーポリシーに同意の上、送信してください。",
-  }),
+  privacyPolicy: z.coerce.boolean().refine((val) => val === true, {
+    message: "プライバシーポリシーに同意の上、送信してください。",
+  })
 });
 
-export type ContactSchemaType = z.infer<typeof contactSchema>

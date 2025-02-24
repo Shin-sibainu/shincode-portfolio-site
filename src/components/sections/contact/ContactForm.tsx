@@ -1,20 +1,28 @@
 "use client"
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormState } from 'react-dom';
-import { sendContactForm } from './action';
 import { useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { contactSchema } from './contact-schema';
+import { sendContactForm } from './action';
+import { useRouter } from 'next/navigation';
 
 const ContactForm = () => {
-  const [state, formAction] = useFormState(sendContactForm, undefined);
+  const router = useRouter();
+  const [lastResult, formAction] = useFormState(sendContactForm, undefined);
+  useEffect(() => {
+    if (lastResult?.status === 'success') {
+      router.push('/thanks');
+    }
+  }, [lastResult, router]);
   const [form, fields] = useForm({
+    lastResult,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: contactSchema });
     },
     shouldValidate: "onBlur"
-  })
+  });
 
   return (
     <form className="flex flex-col items-start py-8 px-6 lg:p-12 gap-6 md:gap-8 w-full"
@@ -37,7 +45,7 @@ const ContactForm = () => {
           </div>
           <input
             className={`flex items-start p-3 bg-white border-[1px] ${
-              fields.email.errors ? 'border-warning' : 'border-secondary-300'
+              fields.name.errors ? 'border-warning' : 'border-secondary-300'
               } w-full text-secondary-900 placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider`}
             placeholder="例）山田 太郎"
             name={fields.name.name}
@@ -84,6 +92,7 @@ const ContactForm = () => {
           </div>
           <input
             type="text"
+            name={fields.company.name}
             className="flex items-start p-3 bg-white border-[1px] border-secondary-300 w-full text-secondary-900 placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider"
             placeholder="例）株式会社 〇〇〇〇"
           />
@@ -162,6 +171,7 @@ const ContactForm = () => {
               type="checkbox"
               name={fields.privacyPolicy.name}
               className="h-5 w-5 accent-white"
+              value="true"
             />
 
             <label  className="font-notoSansJP font-medium text-sm leading-[21px] flex items-center tracking-wider text-primary-950">
@@ -180,11 +190,16 @@ const ContactForm = () => {
           type="submit">
           送信する
         </button>
-        {state?.message && (
-          <p className={`mt-2 ${state.status === 'error' ? 'text-warning' : 'text-green-500'}`}>
-            {state.message}
-          </p>
-        )}
+        {form.errors && (
+        <div>
+          <h2>Error:</h2>
+          <ul>
+            {form.errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       </div>
     </form>
   )

@@ -1,41 +1,51 @@
 "use server"
 
 import { parseWithZod } from "@conform-to/zod";
-import { revalidatePath } from "next/cache";
 import { contactSchema } from "./contact-schema";
+import { Resend } from 'resend';
+import { ContactEmailTemplate } from "./EmailTemplate";
 
 type FormState = {
-  message: string;
-  status?: 'error' | 'success';
-} | undefined;
+  status?: 'success' | 'error';
+  message?: string;
+};
 
-export async function sendContactForm(
-  prevState: FormState,
-  formData: FormData
-): Promise<FormState> {
-  const submission = parseWithZod(formData, { schema: contactSchema });
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+if (!process.env.RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY is not defined');
+}
+
+export async function sendContactForm(_prevState: FormState | undefined, formData: FormData) {
+  const submission = parseWithZod(formData, {
+    schema: contactSchema,
+  });
 
   if (submission.status !== "success") {
-    return {
-      message: "入力内容に誤りがあります。",
-      status: 'error'
-    };
+    return submission.reply();
   }
 
   try {
-    // ここで実際のデータ処理を行う
-    // 例: データベースへの保存やメール送信など
     const validatedData = submission.value;
     
-    revalidatePath("/");
-    return {
-      message: "送信が完了しました",
-      status: 'success'
-    };
+    // メール送信
+    await resend.emails.send({
+      from: 'お問い合わせフォーム <onboarding@resend.dev>',
+      to: [''],
+      subject: 'shinCodeポートフォリオサイトからお問い合わせがありました',
+      react: ContactEmailTemplate({
+        name: validatedData.name,
+        email: validatedData.email,
+        company: validatedData.company,
+        inquiryType: validatedData.inquiryType,
+        message: validatedData.message
+      })
+    });
+
+    return { status: 'success' } as FormState;
   } catch (error) {
-    return {
-      message: "送信に失敗しました。しばらく経ってから再度お試しください。",
-      status: 'error'
-    };
+    return submission.reply({
+      formErrors: ['送信に失敗しました。しばらく経ってから再度お試しください。']
+    });
   }
 }
