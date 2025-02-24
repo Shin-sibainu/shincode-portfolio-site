@@ -1,10 +1,28 @@
-import LinkButton from '@/components/ui/link-button';
+"use client"
+
 import React from 'react';
+import { useFormState } from 'react-dom';
+import { sendContactForm } from './action';
+import { useForm } from '@conform-to/react';
+import { parseWithZod } from '@conform-to/zod';
+import { contactSchema } from './contact-schema';
 
 const ContactForm = () => {
+  const [state, formAction] = useFormState(sendContactForm, undefined);
+  const [form, fields] = useForm({
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: contactSchema });
+    },
+    shouldValidate: "onBlur"
+  })
+
   return (
-    <div className="flex flex-col items-start py-8 px-6 lg:p-12 gap-6 md:gap-8 w-full">
-      <div className="flex flex-col items-start gap-6 w-full">
+    <form className="flex flex-col items-start py-8 px-6 lg:p-12 gap-6 md:gap-8 w-full"
+      action={formAction}
+      id={form.id} 
+      onSubmit={form.onSubmit}
+    >
+      <div className="flex flex-col items-start gap-6 w-full" >
 
         <div className="flex flex-col items-start gap-2 w-full">
           <div className="flex items-center gap-3">
@@ -18,10 +36,15 @@ const ContactForm = () => {
             </p>
           </div>
           <input
-            type="text"
-            className="flex items-start p-3 bg-white border-[1px] border-secondary-300 w-full text-secondary-900 placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider"
+            className={`flex items-start p-3 bg-white border-[1px] ${
+              fields.email.errors ? 'border-warning' : 'border-secondary-300'
+              } w-full text-secondary-900 placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider`}
             placeholder="例）山田 太郎"
+            name={fields.name.name}
           />
+          {fields.name.errors && (
+            <p className="text-warning text-sm">{fields.name.errors}</p>
+          )}
         </div>
 
         <div className="flex flex-col items-start gap-2 w-full">
@@ -37,9 +60,15 @@ const ContactForm = () => {
           </div>
           <input
             type="email"
-            className="flex items-start p-3 bg-white border-[1px] border-secondary-300 w-full text-secondary-900 placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider"
-            placeholder="例）example@example.com"
-          />
+            name={fields.email.name}
+            className={`flex items-start p-3 bg-white border-[1px] ${
+              fields.email.errors ? 'border-warning' : 'border-secondary-300'
+              } w-full text-secondary-900 placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider`}
+              placeholder="例）example@example.com"
+            />
+          {fields.email.errors && (
+            <p className="text-warning text-sm">{fields.email.errors}</p>
+          )}
         </div>
 
         <div className="flex flex-col items-start gap-2 w-full">
@@ -73,11 +102,13 @@ const ContactForm = () => {
           </div>
           <div className="relative w-full group">
             <select
-              className="flex items-start p-3 bg-white border-[1px] border-secondary-300 w-full text-secondary-900 font-notoSansJP font-medium text-base tracking-wider appearance-none cursor-pointer group-hover:border-primary-950"
+              name={fields.inquiryType.name}
+              className={`flex items-start p-3 bg-white border-[1px] ${
+                fields.inquiryType.errors ? 'border-warning' : 'border-secondary-300'
+                } w-full text-secondary-900 font-notoSansJP font-medium text-base tracking-wider appearance-none cursor-pointer group-hover:border-primary-950`}
               defaultValue=""
-              required
             >
-              <option value="" disabled>以下から選択してください。</option>
+              <option value="">以下から選択してください。</option>
               <option value="general">プログラミング学習について</option>
               <option value="business">ビジネスに関するお問い合わせ</option>
             </select>
@@ -87,6 +118,9 @@ const ContactForm = () => {
               </svg>
             </div>
           </div>
+          {fields.inquiryType.errors && (
+            <p className="text-warning text-sm">{fields.inquiryType.errors}</p>
+          )}
         </div>
 
         <div className="flex flex-col items-start gap-2 w-full">
@@ -101,9 +135,15 @@ const ContactForm = () => {
             </p>
           </div>
           <textarea
-            className="flex items-start p-3 bg-white border-[1px] border-secondary-300 w-full text-secondary-900 min-h-[144px] placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider"
+            name={fields.message.name}
+            className={`flex items-start p-3 bg-white border-[1px] ${
+              fields.message.errors ? 'border-warning' : 'border-secondary-300'
+              } w-full text-secondary-900 min-h-[144px] placeholder:text-secondary-300 font-notoSansJP font-medium text-base tracking-wider`}
             placeholder="例）Webアプリ開発の依頼についてZoomで相談したい。"
           />
+            {fields.message.errors && (
+              <p className="text-warning text-sm">{fields.message.errors}</p>
+            )}
         </div>
 
         <div className="flex flex-col items-start gap-2 w-full">
@@ -120,24 +160,33 @@ const ContactForm = () => {
           <div className="flex items-center pt-1 gap-3">
             <input
               type="checkbox"
-              required
+              name={fields.privacyPolicy.name}
               className="h-5 w-5 accent-white"
             />
+
             <label  className="font-notoSansJP font-medium text-sm leading-[21px] flex items-center tracking-wider text-primary-950">
               プライバシーポリシーに同意する
             </label>
+
           </div>
+          {fields.privacyPolicy.errors && (
+            <p className="text-warning text-sm">{fields.privacyPolicy.errors}</p>
+          )}
         </div>
       </div>
 
       <div className="w-full">
-        <LinkButton
-          href="#"
-          text="送信する"
-          variant="default"
-        />
+        <button
+          type="submit">
+          送信する
+        </button>
+        {state?.message && (
+          <p className={`mt-2 ${state.status === 'error' ? 'text-warning' : 'text-green-500'}`}>
+            {state.message}
+          </p>
+        )}
       </div>
-    </div>
+    </form>
   )
 };
 
