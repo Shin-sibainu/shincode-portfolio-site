@@ -28,6 +28,6 @@ const ContactSubmitButton = () => {
       </button>
     </>
   )
-}
+};
 
 export default ContactSubmitButton;

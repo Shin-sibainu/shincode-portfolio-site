@@ -11,7 +11,6 @@ type FormState = {
 };
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
 if (!process.env.RESEND_API_KEY) {
   throw new Error('RESEND_API_KEY is not defined');
 }
@@ -25,15 +24,12 @@ export async function sendContactForm(_prevState: FormState | undefined, formDat
     return submission.reply();
   }
 
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
   try {
     const validatedData = submission.value;
-    
-    // メール送信
+
     await resend.emails.send({
-      from: 'お問い合わせフォーム <onboarding@resend.dev>',
-      to: [''],
+      from: 'お問い合わせ <onboarding@resend.dev>',
+      to: process.env.CONTACT_EMAIL as string,
       subject: 'shinCodeポートフォリオサイトからお問い合わせがありました',
       react: ContactEmailTemplate({
         name: validatedData.name,
@@ -50,4 +46,4 @@ export async function sendContactForm(_prevState: FormState | undefined, formDat
       formErrors: ['送信に失敗しました。しばらく経ってから再度お試しください。']
     });
   }
-}
+};

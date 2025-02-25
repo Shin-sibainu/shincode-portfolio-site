@@ -18,4 +18,3 @@ export const contactSchema = z.object({
     message: "プライバシーポリシーに同意の上、送信してください。",
   })
 });
-

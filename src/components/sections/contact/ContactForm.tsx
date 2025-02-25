@@ -13,11 +13,6 @@ import ContactSubmitButton from './ContactSubmitButton';
 const ContactForm = () => {
   const router = useRouter();
   const [lastResult, formAction] = useFormState(sendContactForm, undefined);
-  useEffect(() => {
-    if (lastResult?.status === 'success') {
-      router.push('/thanks');
-    }
-  }, [lastResult, router]);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
@@ -25,6 +20,12 @@ const ContactForm = () => {
     },
     shouldValidate: "onBlur"
   });
+
+  useEffect(() => {
+    if (lastResult?.status === 'success') {
+      router.push('/thanks');
+    }
+  }, [lastResult, router]);
 
   return (
     <form className="flex flex-col items-start py-8 px-6 lg:p-12 gap-6 md:gap-8 w-full"
@@ -192,10 +193,9 @@ const ContactForm = () => {
         <ContactSubmitButton />
         {form.errors && (
         <div>
-          <h2>Error:</h2>
           <ul>
             {form.errors.map((error) => (
-              <li key={error}>{error}</li>
+              <li key={error} className="text-warning">{error}</li>
             ))}
           </ul>
         </div>
