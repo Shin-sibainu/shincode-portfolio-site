@@ -75,7 +75,8 @@ const config: Config = {
   		},
   		boxShadow: {
   			'contact': '8px 8px 32px 0px rgba(0, 0, 0, 0.1)',
-  			'social-link': '8px 8px 32px 0px rgba(41,37,33,0.1)'
+  			'social-link': '8px 8px 32px 0px rgba(41,37,33,0.1)',
+				'hero-message': '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
