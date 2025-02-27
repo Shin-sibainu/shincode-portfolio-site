@@ -1,4 +1,4 @@
-import ArrowIcon from '@/components/ui/ArrowIcon';
+import ArrowIcon from '@/components/ui/arrow-icon';
 import React from 'react'
 import { useFormStatus } from 'react-dom';
 
