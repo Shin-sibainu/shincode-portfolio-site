@@ -24,6 +24,7 @@ const config: Config = {
 				'primary-700': '#3D69B8',
   			'primary-950': '#1C273E',
   			'primary-900': '#304A78',
+				'warning': '#E74C3C',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
