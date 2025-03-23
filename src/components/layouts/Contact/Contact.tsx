@@ -14,7 +14,7 @@ const Contact = () => {
 
           <div className="flex flex-col justify-center items-center w-full">
             <Link
-              href="/#"
+              href="/contact"
               className="inline-flex items-center py-3 pl-12 md:pl-10 bg-white rounded-sm border border-white transition duration-300 ease-out shadow-contact hover:shadow-contact hover:bg-primary-100 pr-3 md:pr-4 group">
               <span className="font-notoSansJP font-medium text-base flex items-center text-primary-950 pr-5">
                 お問い合わせはこちら

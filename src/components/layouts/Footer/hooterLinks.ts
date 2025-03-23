@@ -41,7 +41,7 @@ export const socialLinks: SocialLinkType[] = [
 ];
 
 export const navLinks: NavLinkType[] = [
-  { name: "About", href: "#" },
-  { name: "Services", href: "#" },
-  { name: "Contact", href: "#" }
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Contact", href: "/contact" }
 ];
