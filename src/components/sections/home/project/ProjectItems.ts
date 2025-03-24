@@ -49,7 +49,7 @@ export const projects: Project[] = [
       },
     ],
     buttonText: '事業内容を見る',
-    buttonHref: '#',
+    buttonHref: '/services',
     imagePosition: 'left',
   },
   {
@@ -69,7 +69,7 @@ export const projects: Project[] = [
       },
     ],
     buttonText: 'YouTubeチャンネルを見る',
-    buttonHref: '#',
+    buttonHref: 'https://www.youtube.com/@programming_tutorial_youtube',
     imagePosition: 'right',
   },
 ];

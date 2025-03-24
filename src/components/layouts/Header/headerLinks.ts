@@ -5,9 +5,9 @@ interface HeaderLinkType {
 };
 
 export const pageLinks: HeaderLinkType[] = [
-  { title: "ABOUT", href: "#" },
-  { title: "SERVICES", href: "#" },
-  { title: "CONTACT", href: "#" },
+  { title: "ABOUT", href: "/about" },
+  { title: "SERVICES", href: "/services" },
+  { title: "CONTACT", href: "/contact" },
 ];
 
 export const snsLinks: HeaderLinkType[] = [

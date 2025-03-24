@@ -18,7 +18,7 @@ const MessageSection = () => {
           </p>
           <div className="flex justify-center items-center w-full">
             <LinkButton
-              href="#"
+              href="/about"
               text="私たちについて"
               variant="default"
             />
