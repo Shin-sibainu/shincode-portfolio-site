@@ -10,7 +10,7 @@ interface ProjectCardProps {
 };
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  const { image, title, details, buttonText, buttonHref, imagePosition } = project;
+  const { image, title, details, buttonText, buttonHref, imagePosition, buttonTarget, buttonRel } = project;
   const marginBottom = index === 0 ? 'md:mb-[50px]' : 'md:mb-[52px]';
   const gap = index === 0 ? '' : 'gap-4 md:gap-5';
 
@@ -73,6 +73,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={buttonHref}
                 text={buttonText}
                 variant="underline"
+                target={buttonTarget}
+                rel={buttonRel}
               />
             </div>
           </div>

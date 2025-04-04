@@ -12,6 +12,8 @@ export interface Project {
   details: ProjectDetail[];
   buttonText: string;
   buttonHref: string;
+  buttonTarget?: string;
+  buttonRel?: string;
   imagePosition: 'left' | 'right';
 };
 
@@ -29,8 +31,10 @@ export const projects: Project[] = [
       },
     ],
     buttonText: 'プラットフォームを見る',
-    buttonHref: '#',
-    imagePosition: 'right',
+    buttonHref: 'https://code-s-school-5bc2.thinkific.com/bundles/shincode-camp',
+    buttonTarget: '_blank',
+    buttonRel: 'noopener noreferrer',
+    imagePosition: 'right'
   },
   {
     image: {
@@ -70,6 +74,8 @@ export const projects: Project[] = [
     ],
     buttonText: 'YouTubeチャンネルを見る',
     buttonHref: 'https://www.youtube.com/@programming_tutorial_youtube',
+    buttonTarget: '_blank',
+    buttonRel: 'noopener noreferrer',
     imagePosition: 'right',
   },
 ];
