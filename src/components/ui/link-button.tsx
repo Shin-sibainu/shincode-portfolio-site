@@ -5,9 +5,11 @@ interface LinkButtonProps {
   href: string;
   text: string;
   variant: 'default' | 'white' | 'underline';
+  target?: string;
+  rel?: string;
 }
 
-const LinkButton = ({ href, text, variant = 'default' }: LinkButtonProps) => {
+const LinkButton = ({ href, text, variant = 'default', target, rel }: LinkButtonProps) => {
   const baseStyles = "flex justify-center items-center relative";
 
   const variantStyles = {
@@ -32,6 +34,8 @@ const LinkButton = ({ href, text, variant = 'default' }: LinkButtonProps) => {
     <Link 
       href={href} 
       className={variantStyles[variant]}
+      target={target}
+      rel={rel}
     >
       <span className={textStyles[variant]}>
         {text}
